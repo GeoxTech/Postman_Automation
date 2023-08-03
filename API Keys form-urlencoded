@@ -16,3 +16,7 @@ const loginRequest = {
 pm.sendRequest(loginRequest, function (err, response) {
     pm.environment.set("token", response.json().access_token);
 })
+
+
+
+Authorization as Bearer Token = {{token}}
