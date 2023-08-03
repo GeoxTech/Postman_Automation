@@ -1,0 +1,18 @@
+const loginRequest = {
+    url: 'https://id.ng.staging.reltech.co/realms/master/protocol/openid-connect/token',
+    method: 'POST',
+    header: 'Content-Type: application/x-www-form-urlencoded',
+    body: {
+        mode: 'urlencoded',
+        urlencoded: [
+                    { key: "username", value: 'admin' },
+                    { key: "password", value: '5kJ2NaGqqdJGAbtC' },
+                    { key: "client_id", value: 'admin-cli' },
+                    { key: "grant_type", value: 'password' },
+                    
+        ]
+    }
+};
+pm.sendRequest(loginRequest, function (err, response) {
+    pm.environment.set("token", response.json().access_token);
+})
