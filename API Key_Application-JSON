@@ -1,0 +1,19 @@
+const loginRequest = {
+    url: 'https://dev.daara-services.reliancehmo.com/accountservice/api/signin',
+    method: 'POST',
+    header: 'Content-Type: application/json',
+    body: {
+        mode: 'application/json',
+        raw: JSON.stringify({
+            "login":"super.admin@reliancehmo.com",
+            "password":"reliance"
+        })
+    }
+};
+pm.sendRequest(loginRequest, function (err, response) {
+    pm.environment.set("token", response.json().access_token);
+})
+
+
+
+Authorization as Bearer Token = {{token}}
